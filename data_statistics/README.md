@@ -1,0 +1,2 @@
+- get_freq.py: get frequencies of the tweets. e.g., # of tweets per location
+- stigma_nature.py: get texts that contain given keywords
