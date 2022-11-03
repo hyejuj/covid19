@@ -18,17 +18,6 @@ def get_texts(input_file):
     print(len(texts))
     return texts
 
-def display_topics(model, feature_names, no_top_words, outputfile):
-    with open(outputfile, 'w', encoding='utf-8') as f:
-        for topic_idx, topic in enumerate(model.components_):
-            print ("Topic %d:" % (topic_idx))
-            f.write(u"Topic %d:\n" % (topic_idx))
-            print (" ".join([feature_names[i]
-                for i in topic.argsort()[:-no_top_words - 1:-1]]))
-            f.write(" ".join([feature_names[i]
-                for i in topic.argsort()[:-no_top_words - 1:-1]]) + '\n')
-
-
 def run(texts, keywords, output_file):
     vocab = {}
     stopwords = get_stopwords()
