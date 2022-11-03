@@ -7,50 +7,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 import pandas as pd
 from topic_modeling import get_texts
 
-def parse(input_file):
-    data = []
-    with open(input_file) as rf:
-        for line in rf:
-            data_json = json.loads(line)
-            data.append(data_json)
-    return data
-
-def run(texts, num_topics, method='NMF'):
-    # parse JSON
-
-    df = pd.DataFrame(texts, columns=['Text'])
-    print(df)
-    # NMF is able to use tf-idf
-    #    tfidf_vectorizer = TfidfVectorizer(max_df=0.95, min_df=2, max_features=no_features, stop_words='english')
-    tfidf_vectorizer = TfidfVectorizer(stop_words='english')
-    tfidf = tfidf_vectorizer.fit_transform(df['Text'])
-    print('tfidf feature table size: %s', tfidf.shape)
-    tfidf_feature_names = tfidf_vectorizer.get_feature_names()
-
-    # LDA can only use raw term counts for LDA because it is a probabilistic graphical model
-#    tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, max_features=no_features, stop_words='english')
-    tf_vectorizer = CountVectorizer(stop_words='english')
-    tf = tf_vectorizer.fit_transform(df['Text'])
-    print('tf feature table size: %s', tfidf.shape)
-    tf_feature_names = tf_vectorizer.get_feature_names()
-
-    model = None
-    feature_names = None
-    if method == 'NMF':  
-        model = NMF(n_components=num_topics).fit(tfidf)
-        feature_names = tfidf_feature_names
-    #   model = NMF(n_components=no_topics, random_state=1, alpha=.1, l1_ratio=.5, init='nndsvd').fit(data)
-    elif method == 'LDA':
-        model = LatentDirichletAllocation(n_components=num_topics).fit(tf)
-    #   model = LatentDirichle tAllocation(n_components=no_topics, max_iter=5, learning_method='online', learning_offset=50.,random_state=0).fit(data)
-        feature_names = tf_feature_names
-    
-    output_file = '%s_%d.txt' % (method, num_topics)
-    display_topics(model, feature_names, 50, output_file)
-
-    return model
-
-
 def get_hashtag_freq(data):
     hashtags_cnts = {}
     for datum in data:
