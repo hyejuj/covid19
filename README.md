@@ -4,8 +4,10 @@ The tweets used for this study are from Chen et al., 2020 (https://publichealth.
 
 Currently, the scripts are not organized for different tasks. To be updated.
 
-* Preprocessing
-1. After downloading the data, run get_Canada.py or get_US.py
-2. run detect_eng.py 
-3. run preprocessing.py
+* data_statistics: scripts to count frequencies of tweets per certain condition, e.g., location
+* Preprocessing: scripts to prepare data by filtering out non-canada, non-us, and non-english.
+* topic_modeling: scripts to build a topic model using LDA/NMF, and get topic distributions per location and time(weekly)
+* sentiment_analysis: scripts to do inference of sentiments using ABSApp. Training should be done following the instructions on the ABSApp website.
+
+Warning: You need to check input, output, and hardcoded values.
 
