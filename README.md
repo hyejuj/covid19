@@ -4,6 +4,8 @@ The tweets used for this study are from Chen et al., 2020 (https://publichealth.
 
 Currently, the scripts are not organized for different tasks. To be updated.
 
+* Preprocessing
 1. After downloading the data, run get_Canada.py or get_US.py
 2. run detect_eng.py 
 3. run preprocessing.py
+
