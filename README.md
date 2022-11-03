@@ -1,4 +1,4 @@
-This repository contains scripts used for Hyeju Jang's COVID-19 paper that analyzes COVID-19 related tweets.
+This repository contains scripts used for Hyeju Jang's COVID-19 paper that analyzes COVID-19 related tweets: https://www.jmir.org/2021/2/e25431/
 
 The tweets used for this study are from Chen et al., 2020 (https://publichealth.jmir.org/2020/2/e19273). They have a github repository, and you can download the tweets using their scripts.
 
